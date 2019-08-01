@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ionic/core": "^4.7.1",
+    "@material/mwc-button": "^0.6.0",
+    "@material/mwc-icon": "^0.6.0",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
     "@types/jest": "24.0.15",
     "@types/node": "12.6.8",
+    "color": "^3.1.2",
+    "component-register": "^0.6.14",
+    "seedrandom": "^3.0.1",
+    "solid-element": "^0.6.0",
     "solid-js": "^0.9.3",
     "solid-scripts": "0.0.17",
-    "typescript": "3.5.3"
+    "typescript": "3.5.3",
+    "typescript-plugin-css-modules": "^1.2.1"
   },
   "scripts": {
     "start": "solid-scripts start",
@@ -21,5 +31,9 @@
     "Safari 11",
     "Edge 17",
     "Node 10"
-  ]
+  ],
+  "devDependencies": {
+    "@types/color": "^3.0.0",
+    "@types/seedrandom": "^2.4.28"
+  }
 }

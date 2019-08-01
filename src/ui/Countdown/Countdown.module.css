@@ -1,0 +1,13 @@
+.countdown {
+  text-align: center;
+}
+.countdownNumber {
+  font-size: 5em;
+  font-family: 'Courier New', Courier, monospace
+}
+
+.countdownS {
+  font-size: 1.5em;
+  padding-left: 10pt;
+
+}

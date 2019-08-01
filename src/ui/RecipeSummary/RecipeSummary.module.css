@@ -1,0 +1,20 @@
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.summary {
+  padding: 8pt;
+  font-size: 2em;
+  border-bottom: 4pt;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  cursor: pointer;
+}
+
+.fullRecipe {
+  margin-left: 10pt;
+  border-left: solid black 4pt;
+  margin-bottom: 10pt;
+}
