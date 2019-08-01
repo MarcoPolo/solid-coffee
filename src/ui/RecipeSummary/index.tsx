@@ -5,7 +5,7 @@ import { createState } from 'solid-js';
 import { Show } from 'solid-js/dom';
 import Recipe from '../Recipe';
 
-export default (props: { recipe: RecipeType }) => {
+export default (props: { recipe: RecipeType, onUpdatePercent: (percent: number) => void }) => {
   const [state, setState] = createState({ opened: false })
 
   return (
@@ -16,7 +16,7 @@ export default (props: { recipe: RecipeType }) => {
       </div>
       <Show when={(state.opened)}>
         <div class={styles.fullRecipe}>
-          <Recipe recipe={(props.recipe)} />
+          <Recipe recipe={(props.recipe)} onUpdatePercent={props.onUpdatePercent} />
         </div>
       </Show>
     </div>

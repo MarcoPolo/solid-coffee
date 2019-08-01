@@ -5,24 +5,44 @@ import { createState, createMemo, sample } from 'solid-js';
 import Button from '../Button'
 import Countdown from '../Countdown';
 
-export default (props: { recipe: RecipeType }) => {
+export default (props: { recipe: RecipeType, onUpdatePercent: (percent: number) => void }) => {
+  // @ts-ignore
+  const totalTime = createMemo(() => props.recipe.steps.reduce((acc, item) => acc + (item.time || 0), 0))
   const [state, setState] = createState({ activeStep: -1, currentStepCountdown: 0, started: false, stepStartTs: Date.now(), finished: false, paused: false })
 
-  const onTick = (timeLeft: number) => {
-    if (state.started && state.activeStep < props.recipe.steps.length - 1) {
-      if (timeLeft <= 0) {
-        setState({ activeStep: state.activeStep + 1, stepStartTs: Date.now() })
+  const timeElapsedSoFar = createMemo<number>(() => {
+    if (state.activeStep >= 0) {
+      let elapsedTime = 0;
+      for (let index = 0; index < state.activeStep; index++) {
+        // @ts-ignore
+        elapsedTime += props.recipe.steps[index].time || 0
       }
-    } else if (state.started) {
-      setState({ finished: true })
+      return elapsedTime
+    } else {
+      return 0
     }
-  }
+  }, 0)
 
   const time = createMemo(() => {
     const activeStep = props.recipe.steps[state.activeStep]
     const time = activeStep && activeStep.kind === StepKind.Timed ? activeStep.time * 1e3 : null
     return time
   })
+
+  const onTick = (timeLeft: number) => {
+    if (state.started && state.activeStep < props.recipe.steps.length - 1) {
+      if (timeLeft <= 0) {
+        setState({ activeStep: state.activeStep + 1, stepStartTs: Date.now() })
+      } else {
+        const timeSoFar = timeElapsedSoFar() + (((time() || 0) - timeLeft) / 1e3)
+        const percentSoFar = timeSoFar / totalTime()
+        props.onUpdatePercent(percentSoFar);
+      }
+    } else if (state.started) {
+      setState({ finished: true })
+      props.onUpdatePercent(1);
+    }
+  }
 
   return (
     <div className={styles.recipe}>
