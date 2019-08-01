@@ -15,7 +15,7 @@ function App() {
       <header class="App-header">
         <img src={logo} alt={"logo"} class={"appLogo"} />
       </header>
-      <div style={{ display: 'flex', height: '100%', width: '100%' }}>
+      <div>
         <div class="Recipes">
           <div class="Recipe-header">Recipes</div>
           <For each={(recipes)}>

@@ -1,8 +1,8 @@
 .App {
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   margin-bottom: 40pt;
+  align-items: center;
 }
 .App-header {
   display: flex;
@@ -23,6 +23,7 @@
   align-items: stretch;
   display: flex;
   flex-direction: column;
+  max-width: 500pt;
 }
 
 .appLogo {
