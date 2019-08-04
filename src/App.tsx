@@ -27,7 +27,6 @@ function App() {
       </header>
       <div>
         <div class="recipes">
-          <div class="recipeHeader">Recipes</div>
           <For each={(recipes)}>
             {recipe => (
               <>
