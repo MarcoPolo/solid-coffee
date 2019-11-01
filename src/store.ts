@@ -128,4 +128,46 @@ const xiaobo = {
   steps: xiaoboSteps
 }
 
-export const recipes: Array<RecipeType> = [paulina, xiaobo]
+const Evgeni = {
+  title: '2018 WAC, 3rd',
+  author: 'Evgeni Pinchukov, Belarus',
+  coffeeAmt: 15,
+  grind: 8,
+  waterAmt: 230,
+  waterTmp: 80,
+  aeropressStyle: AeropressStyle.Inverted,
+  filter: Filter.Paper,
+  steps: [
+    {
+      kind: StepKind.Instruct,
+      directions: "Add 15g of coffee into chamber."
+    },
+    {
+      kind: StepKind.Timed,
+      directions: "Add 50g of water",
+      time: 10
+    },
+    {
+      kind: StepKind.Timed,
+      directions: "Stir",
+      time: 30
+    },
+    {
+      kind: StepKind.Timed,
+      directions: "Add 180g water & wait",
+      time: 25
+    },
+    {
+      kind: StepKind.Timed,
+      directions: "Stir",
+      time: 5
+    },
+    {
+      kind: StepKind.Timed,
+      directions: "Press until coffee grounds are just visible above water",
+      time: 5
+    },
+  ]
+}
+
+export const recipes: Array<RecipeType> = [paulina, xiaobo, Evgeni]
