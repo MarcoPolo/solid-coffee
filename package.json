@@ -15,7 +15,7 @@
     "seedrandom": "^3.0.1",
     "solid-element": "^0.6.0",
     "solid-js": "^0.9.3",
-    "solid-scripts": "0.0.17",
+    "solid-scripts": "0.0.61",
     "typescript": "3.5.3",
     "typescript-plugin-css-modules": "^1.2.1"
   },
