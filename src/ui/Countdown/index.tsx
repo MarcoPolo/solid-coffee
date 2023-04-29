@@ -25,6 +25,8 @@ export default (props: Props) => {
   )
 
   let id: NodeJS.Timeout | null
+  // Create a reference for the Wake Lock.
+  let wakeLock: any | null = null;
   createEffect(() => {
     if (state.currentCountdown > 0 && !id) {
       id = setInterval(() => {
@@ -37,11 +39,27 @@ export default (props: Props) => {
           id = null
         }
       }, countdownInterval)
-    }
 
+      // create an async function to request a wake lock
+      if ("wakeLock" in navigator) {
+        // @ts-expect-error not typed
+        navigator.wakeLock.request("screen").then((wl) => {
+          wakeLock = wl
+          // console.log("Wake lock is active")
+        }).catch((err: unknown) => {
+          console.log(`wakelock err: ${err}`);
+        });
+      }
+    }
   })
 
-  onCleanup(() => id && clearInterval(id))
+  onCleanup(() => {
+    id && clearInterval(id)
+    wakeLock && wakeLock.release().then(() => {
+      // console.log("Wake lock is released")
+      wakeLock = null;
+    });
+  })
 
   return <div class={styles.countdown}><b class={styles.countdownNumber}>{(formatMsToS(state.currentCountdown))}</b><b class={countdownS}><i>s</i></b></div>
 }

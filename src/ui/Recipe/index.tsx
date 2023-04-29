@@ -1,7 +1,7 @@
 import styles from './style.module.css'
 import { RecipeType, RecipeStep, StepKind } from '../../store'
 import { For, Show, } from 'solid-js/dom'
-import { createState, createMemo, sample } from 'solid-js';
+import { createState, createMemo } from 'solid-js';
 import Button from '../Button'
 import Countdown from '../Countdown';
 
